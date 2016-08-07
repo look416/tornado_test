@@ -19,6 +19,7 @@ class Application(tornado.web.Application):
 
 def main():
     app = Application()
+    app.debug = true
     app.listen(80)
     IOLoop.instance().start()
 
