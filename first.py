@@ -2,10 +2,13 @@ from tornado import httpserver
 from tornado import gen
 from tornado.ioloop import IOLoop
 import tornado.web
+import fireconfig
 
 class MainHandler(tornado.web.RequestHandler):
     def get(self):
-        self.write('Hello, world')
+        db = fireconfig.getDataBase()
+        db.get()
+        self.write(db.val())
 
 class Application(tornado.web.Application):
     def __init__(self):
